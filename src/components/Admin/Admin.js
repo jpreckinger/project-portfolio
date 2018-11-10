@@ -6,6 +6,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button';
+
 
 class Admin extends Component {
 
@@ -53,7 +55,7 @@ class Admin extends Component {
                             {/* Map here */}
                             <TableRow>
                                 <TableCell>Test Data</TableCell>
-                                <TableCell>Test Data</TableCell>
+                                <TableCell><Button>Delete</Button></TableCell>
                             </TableRow>
                             {/* end map */}
                         </TableBody>
