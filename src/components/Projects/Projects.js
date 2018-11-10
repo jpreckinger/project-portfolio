@@ -4,12 +4,16 @@ import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
+import {connect} from 'react-redux';
 
 
 class Projects extends Component {
   // Renders the entire app on the DOM
 
-    
+    // On render, tell the saga to handle to next step of getting projects
+    componentDidMount(){
+        this.props.dispatch({type: 'FETCH_PROJECTS'})
+    }
 
     render() {
         return (
@@ -61,4 +65,6 @@ class Projects extends Component {
     }
 }
 
-export default Projects;
+const mapStateToProps = (reduxState) => ({reduxState});
+
+export default connect(mapStateToProps)(Projects);

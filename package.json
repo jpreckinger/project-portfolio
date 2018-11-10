@@ -6,6 +6,9 @@
   "dependencies": {
     "@material-ui/core": "^3.4.0",
     "axios": "^0.18.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "pg": "^7.6.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-redux": "^5.0.7",
