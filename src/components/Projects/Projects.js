@@ -19,47 +19,27 @@ class Projects extends Component {
         return (
             <div className="Projects">
                 <h1 id="header">Jonathan Reckinger</h1>
-                <Paper>
-                    <Card>
-                        <CardMedia>
-                            {/* img goes here */}
-                        </CardMedia>
-                        <CardContent>
-                            <h1>Project Name</h1>
-                            <p>github</p>
-                            <p>Website</p>
-                            <p>tag</p>
-                            <br/>
-                            <p>here will go a bunch of words describing the project</p>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardMedia>
-                            {/* img goes here */}
-                        </CardMedia>
-                        <CardContent>
-                            <h1>Project Name</h1>
-                            <p>github</p>
-                            <p>Website</p>
-                            <p>tag</p>
-                            <br/>
-                            <p>here will go a bunch of words describing the project</p>
-                        </CardContent>
-                    </Card>
-                    <Card>
-                        <CardMedia>
-                            {/* img goes here */}
-                        </CardMedia>
-                        <CardContent>
-                            <h1>Project Name</h1>
-                            <p>github</p>
-                            <p>Website</p>
-                            <p>tag</p>
-                            <br/>
-                            <p>here will go a bunch of words describing the project</p>
-                        </CardContent>
-                    </Card>
-                </Paper>
+                {this.props.reduxState.projects.map(project => (
+                    <div key={project.id}>
+                        <Paper>
+                            <Card>
+                                <CardMedia
+                                    className="pics"
+                                    image={project.thumbnail} 
+                                    title={project.name}
+                                />
+                                <CardContent>
+                                    <h1>{project.name}</h1>
+                                    <p>{project.github}</p>
+                                    <p>{project.website}</p>
+                                    <p>{project.tag_name}</p>
+                                    <br/>
+                                    <p>{project.description}</p>     
+                                </CardContent>                     
+                            </Card>
+                        </Paper>
+                     </div>
+                ))}
             </div>
         );
     }

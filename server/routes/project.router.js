@@ -3,7 +3,12 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    pool.query(`SELECT * FROM projects ORDER BY date_completed DESC`)
+    const sqlText = `
+        SELECT projects.id, projects.name, description, thumbnail, website,
+            github, date_completed, tags.name as tag_name FROM projects
+        JOIN tags ON tags.id=projects.tag_id
+        ORDER BY date_completed DESC`;
+    pool.query(sqlText)
     .then((result) => {
         res.send(result.rows);
     })
