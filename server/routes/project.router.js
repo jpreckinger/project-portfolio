@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
         res.send(result.rows);
     })
     .catch((error) => { 
-        console.log('error gettting data', error);
+        console.log('error getting data', error);
         res.sendStatus(500);
     });
 })

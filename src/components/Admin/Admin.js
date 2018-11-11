@@ -79,6 +79,7 @@ class Admin extends Component {
 
     componentDidMount() {
         this.props.dispatch({type: 'FETCH_PROJECTS'})
+        this.props.dispatch({type: 'FETCH_TAGS'})
     }
 
     render() {
@@ -95,12 +96,9 @@ class Admin extends Component {
                     placeholder="mm-dd-yyyy" type="date" name="date" />
                     <select onChange={this.handleChange} name="tag">
                         <option defaultValue="" hidden>Tag</option>
-                        <option value='1'>React</option>
-                        <option value='2'>jQuery</option>
-                        <option value="3">Node</option>
-                        <option value="4">SQL</option>
-                        <option value="5">Redux</option>
-                        <option value="6">HTML</option>
+                        {this.props.reduxState.tags.map( tag => (
+                            <option key={tag.id} value={tag.id}>{tag.name}</option>
+                        ))}
                     </select>
                     <br/>
                     <input onChange={this.handleChange} value={this.state.github}
