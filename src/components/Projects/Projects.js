@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Projects.css';
 import Paper from '@material-ui/core/Paper';
 import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import {connect} from 'react-redux';
 
@@ -23,13 +22,9 @@ class Projects extends Component {
                     <div key={project.id}>
                         <Paper>
                             <Card>
-                                <CardMedia
-                                    className="pics"
-                                    image={project.thumbnail} 
-                                    title={project.name}
-                                />
                                 <CardContent>
-                                    <h1>{project.name}</h1>
+                                    <img className="pics" src="/images/goat_small.jpg" alt={project.name} />
+                                    <h1 id="test">{project.name}</h1>
                                     <p>{project.github}</p>
                                     <p>{project.website}</p>
                                     <p>{project.tag_name}</p>

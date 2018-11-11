@@ -1,10 +1,6 @@
-p{
-    display: inline-block;
-    margin-left: 15px;
-}
-
-Card{
-    margin-bottom: 5px;
+.MuiCardContent-root-29{
+    display: flex;
+    justify-content: space-around;
 }
 
 #header{
@@ -13,3 +9,4 @@ Card{
     margin: 0px;
     color: white;
 }
+
