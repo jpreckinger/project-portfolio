@@ -30,4 +30,20 @@ router.delete('/:id', (req,res) => {
     })
 })
 
+router.post('/', (req,res) => {
+    console.log(req.body);
+    const sqlText = `INSERT INTO "projects" ("name", "description", "website",
+     "github", "date_completed", "tag_id")
+      VALUES ($1, $2, $3, $4, $5, $6);`
+    const project = req.body.data; 
+    pool.query(sqlText, [project.name, project.description, project.website, 
+        project.github, project.date, Number(project.tag)])
+    .then((response) => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;

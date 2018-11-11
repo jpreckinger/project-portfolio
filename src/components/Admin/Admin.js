@@ -14,6 +14,15 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class Admin extends Component {
 
+    state = {
+        name: '',
+        date: '',
+        tag: '',
+        github: '',
+        website: '',
+        description: ''
+    }
+
     handleClick = (id) => {
         confirmAlert({
             title: 'Confirm delete',
@@ -43,8 +52,6 @@ class Admin extends Component {
         })
     }
 
-    
-
     deleteProject = (id) => {
         this.props.dispatch({type: 'DELETE_PROJECT', payload: id});
         confirmAlert({
@@ -58,10 +65,16 @@ class Admin extends Component {
         })
     }
 
+    handleChange = (event) => {
+        this.setState({
+            ...this.state,
+            [event.target.name]: event.target.value
+        })
+    }
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log('in handlesubmit');
+        this.props.dispatch({type: 'ADD_PROJECT', payload: this.state})
     }
 
     componentDidMount() {
@@ -76,21 +89,27 @@ class Admin extends Component {
             <section>
                 <h2>Add New Project</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Name" type="text" />
-                    <input placeholder="mm-dd-yyyy" type="date" />
-                    <select name="tags">
-                        <option value="react">React</option>
-                        <option value="jQuery">jQuery</option>
-                        <option value="node">Node</option>
-                        <option value="sql">SQL</option>
-                        <option value="redux">Redux</option>
-                        <option value="html">HTML</option>
+                    <input onChange={this.handleChange} value={this.state.name} 
+                    placeholder="Name" type="text" name="name" />
+                    <input onChange={this.handleChange} value={this.state.date} 
+                    placeholder="mm-dd-yyyy" type="date" name="date" />
+                    <select onChange={this.handleChange} name="tag">
+                        <option defaultValue="" hidden>Tag</option>
+                        <option value='1'>React</option>
+                        <option value='2'>jQuery</option>
+                        <option value="3">Node</option>
+                        <option value="4">SQL</option>
+                        <option value="5">Redux</option>
+                        <option value="6">HTML</option>
                     </select>
                     <br/>
-                    <input placeholder="GitHub URL" type="text" />
-                    <input placeholder="Website URL (Optional)" type="text" />
+                    <input onChange={this.handleChange} value={this.state.github}
+                    placeholder="GitHub URL" type="text" name="github" />
+                    <input onChange={this.handleChange} value={this.state.website}
+                    placeholder="Website URL (Optional)" type="text" name="website"/>
                     <br/>
-                    <input id="description" placeholder="Description" type="text" />
+                    <input onChange={this.handleChange} value={this.state.description}
+                     id="description" placeholder="Description" type="text" name="description" />
                     <br/>
                     <button type="submit">Submit</button>
                 </form>
