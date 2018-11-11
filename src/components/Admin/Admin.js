@@ -14,10 +14,6 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 
 class Admin extends Component {
 
-    getTableData = () => {
-        this.props.dispatch({type: 'FETCH_PROJECTS'})
-    }
-
     handleClick = (id) => {
         confirmAlert({
             title: 'Confirm delete',
@@ -25,7 +21,7 @@ class Admin extends Component {
             buttons: [
               {
                 label: 'Get it out of my sight!',
-                onClick: () => this.props.dispatch({type: 'DELETE_PROJECT', payload: id})
+                onClick: () => this.deleteProject(id),
               },
               {
                 label: 'Not yet.',
@@ -47,13 +43,29 @@ class Admin extends Component {
         })
     }
 
+    
+
+    deleteProject = (id) => {
+        this.props.dispatch({type: 'DELETE_PROJECT', payload: id});
+        confirmAlert({
+            title: 'Sure thing!',
+            message: 'Your project is gone.',
+            buttons: [
+                {
+                label: 'Thanks!',
+                },
+            ]
+        })
+    }
+
+
     handleSubmit = (event) => {
         event.preventDefault();
         console.log('in handlesubmit');
     }
 
     componentDidMount() {
-        this.getTableData();
+        this.props.dispatch({type: 'FETCH_PROJECTS'})
     }
 
     render() {
