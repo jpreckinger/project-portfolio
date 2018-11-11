@@ -35,10 +35,23 @@ function* addProjectSaga(action) {
     }
 }
 
+function* fetchTagsSaga() {
+    console.log('in fetchtags saga');
+    try{
+        const response = yield call(axios.get, '/api/tag');
+        console.log('fetch response is', response.data);
+        yield put ({type: 'SET_TAGS', payload: response.data});
+    }
+    catch(error) {
+        console.log('error getting projects', error);
+    }
+}
+
 function* rootSaga() {
     yield takeEvery( 'FETCH_PROJECTS', fetchProjectSaga );
     yield takeEvery( 'DELETE_PROJECT', deleteProjectSaga );
     yield takeEvery( 'ADD_PROJECT', addProjectSaga );
+    yield takeEvery( 'FETCH_TAGS', fetchTagsSaga );
   }
 
 export default rootSaga;
