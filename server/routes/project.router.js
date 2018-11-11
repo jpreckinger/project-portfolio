@@ -18,4 +18,16 @@ router.get('/', (req, res) => {
     });
 })
 
+router.delete('/:id', (req,res) => {
+    const sqlText = `DELETE FROM projects WHERE id = $1`;
+    const projectId = req.params.id;
+    pool.query(sqlText, [projectId])
+    .then((response) => {
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        res.sendStatus(500);
+    })
+})
+
 module.exports = router;

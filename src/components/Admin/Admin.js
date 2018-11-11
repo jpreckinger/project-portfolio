@@ -7,12 +7,25 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
+import {connect} from 'react-redux';
 
 
 class Admin extends Component {
 
+    getTableData = () => {
+        this.props.dispatch({type: 'FETCH_PROJECTS'})
+    }
+
+    handleClick = (id) => {
+        this.props.dispatch({type: 'DELETE_PROJECT', payload: id})
+    }
+
     handleSubmit = () => {
         console.log('in handlesubmit');
+    }
+
+    componentDidMount() {
+        this.getTableData();
     }
 
     render() {
@@ -52,12 +65,12 @@ class Admin extends Component {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {/* Map here */}
-                            <TableRow>
-                                <TableCell>Test Data</TableCell>
-                                <TableCell><Button>Delete</Button></TableCell>
+                            {this.props.reduxState.projects.map( project => ( 
+                            <TableRow key={project.id}>
+                                <TableCell>{project.name}</TableCell>
+                                <TableCell><Button onClick={() => this.handleClick(project.id)}>Delete Project</Button></TableCell>
                             </TableRow>
-                            {/* end map */}
+                            ))}
                         </TableBody>
                     </Table>
                 </Paper>
@@ -67,4 +80,6 @@ class Admin extends Component {
     }
 }
 
-export default Admin;
+const mapStateToProps = (reduxState) => ({reduxState});
+
+export default connect(mapStateToProps)(Admin);
