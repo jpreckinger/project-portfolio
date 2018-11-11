@@ -8,6 +8,8 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import {connect} from 'react-redux';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 
 class Admin extends Component {
@@ -17,10 +19,36 @@ class Admin extends Component {
     }
 
     handleClick = (id) => {
-        this.props.dispatch({type: 'DELETE_PROJECT', payload: id})
+        confirmAlert({
+            title: 'Confirm delete',
+            message: 'Are you sure you want to delete this?',
+            buttons: [
+              {
+                label: 'Get it out of my sight!',
+                onClick: () => this.props.dispatch({type: 'DELETE_PROJECT', payload: id})
+              },
+              {
+                label: 'Not yet.',
+                onClick: () => this.closeDelete()
+              }
+            ]
+        })
+    };
+
+    closeDelete = () => {
+        confirmAlert({
+            title: 'Got it!',
+            message: 'Your project has not been deleted',
+            buttons: [
+              {
+                label: 'OK',
+              },
+            ]
+        })
     }
 
-    handleSubmit = () => {
+    handleSubmit = (event) => {
+        event.preventDefault();
         console.log('in handlesubmit');
     }
 
