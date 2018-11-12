@@ -24,14 +24,13 @@ class Projects extends Component {
                             <Card>
                                 <CardContent>
                                     {project.thumbnail && <img className="pics" 
-                                    src="/images/goat_small.jpg" alt={project.name} />}
+                                    src={project.thumbnail} alt={project.name} />}
                                     {project.name && <h1 id="test">{project.name}</h1>}
                                     {project.github && <a href={project.github}
                                     target="_blank">GitHub</a>}
                                     {project.website && <a href={project.website} 
                                     target="_blank">Website</a>}
                                     {project.tag_name && <p>{project.tag_name}</p>}
-                                    <br/>
                                     {project.description && <p>{project.description}</p>}     
                                 </CardContent>                     
                             </Card>
