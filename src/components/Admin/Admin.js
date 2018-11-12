@@ -85,8 +85,8 @@ class Admin extends Component {
     render() {
         return (
             <div className="Admin">
-            <header><h1>Admin</h1></header>
-            <Link to="/">Back to Projects</Link>
+            <header><h1 id="header">Admin</h1></header>
+            <Link id="link" to="/">Back to Projects</Link>
             <section>
                 <h2>Add New Project</h2>
                 <form onSubmit={this.handleSubmit}>
