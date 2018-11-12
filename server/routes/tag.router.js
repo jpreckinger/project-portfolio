@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+// get request for list of tags
 router.get('/', (req, res) => {
     console.log('getting tags');
     const sqlText = `SELECT * FROM tags ORDER BY id;`;

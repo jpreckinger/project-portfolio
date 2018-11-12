@@ -23,6 +23,7 @@ class Admin extends Component {
         description: ''
     }
 
+    //checks for confirmation when the delete button is clicked
     handleClick = (id) => {
         confirmAlert({
             title: 'Confirm delete',
@@ -40,6 +41,7 @@ class Admin extends Component {
         })
     };
 
+    //Notifies user that the delete was not processed
     closeDelete = () => {
         confirmAlert({
             title: 'Got it!',
@@ -52,6 +54,7 @@ class Admin extends Component {
         })
     }
 
+    //dispatches the action to delete the selected project
     deleteProject = (id) => {
         this.props.dispatch({type: 'DELETE_PROJECT', payload: id});
         confirmAlert({
@@ -65,6 +68,7 @@ class Admin extends Component {
         })
     }
 
+    //sets state when the user types in the textboxes
     handleChange = (event) => {
         this.setState({
             ...this.state,
@@ -72,11 +76,13 @@ class Admin extends Component {
         })
     }
 
+    //dispatches action to add a project to the database
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.dispatch({type: 'ADD_PROJECT', payload: this.state})
     }
 
+    //on mount, requests all projects and all tags
     componentDidMount() {
         this.props.dispatch({type: 'FETCH_PROJECTS'})
         this.props.dispatch({type: 'FETCH_TAGS'})

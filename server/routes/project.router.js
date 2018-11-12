@@ -2,6 +2,7 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
+//sends request to database for all projects, joined for tags
 router.get('/', (req, res) => {
     const sqlText = `
         SELECT projects.id, projects.name, description, thumbnail, website,
@@ -18,6 +19,7 @@ router.get('/', (req, res) => {
     });
 })
 
+//sends request to delete project from database
 router.delete('/:id', (req,res) => {
     const sqlText = `DELETE FROM projects WHERE id = $1`;
     const projectId = req.params.id;
@@ -30,6 +32,7 @@ router.delete('/:id', (req,res) => {
     })
 })
 
+//sends request to database to add project to database
 router.post('/', (req,res) => {
     console.log(req.body);
     const sqlText = `INSERT INTO "projects" ("name", "description", "website",

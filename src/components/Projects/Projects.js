@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 class Projects extends Component {
   // Renders the entire app on the DOM
 
-    // On render, tell the saga to handle to next step of getting projects
+    // On render, disaptches action to get projects from database
     componentDidMount(){
         this.props.dispatch({type: 'FETCH_PROJECTS'})
     }

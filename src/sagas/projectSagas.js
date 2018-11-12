@@ -1,6 +1,7 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
 import axios from 'axios';
 
+//send call to server to get projects from database, sends result to reducer
 function* fetchProjectSaga() {
     console.log('in fetchproject saga');
     try{
@@ -13,6 +14,7 @@ function* fetchProjectSaga() {
     }
 }
 
+//sends call to server to delete a projecet, then calls the fetchProjectSaga
 function* deleteProjectSaga(action) {
     console.log('in deleteproject saga', action.payload);
     try{
@@ -24,6 +26,7 @@ function* deleteProjectSaga(action) {
     }
 }
 
+//sends post call to server to add project to database, then GETS projects
 function* addProjectSaga(action) {
     console.log('in addproject saga', action.payload);
     try{
@@ -35,6 +38,7 @@ function* addProjectSaga(action) {
     }
 }
 
+// sends get call to server to get tags from database, then send them to reducer
 function* fetchTagsSaga() {
     console.log('in fetchtags saga');
     try{
@@ -47,6 +51,7 @@ function* fetchTagsSaga() {
     }
 }
 
+//watches for actions, directs traffic
 function* rootSaga() {
     yield takeEvery( 'FETCH_PROJECTS', fetchProjectSaga );
     yield takeEvery( 'DELETE_PROJECT', deleteProjectSaga );
