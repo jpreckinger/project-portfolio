@@ -25,3 +25,8 @@ p{
   border: 0px;
   padding: 0px;
 }
+
+#tags{
+  display: flex;
+  justify-content: flex-end;
+}

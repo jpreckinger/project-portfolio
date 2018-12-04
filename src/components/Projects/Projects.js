@@ -30,7 +30,7 @@ class Projects extends Component {
                                     target="_blank">GitHub</a>}
                                     {project.website && <a href={project.website} 
                                     target="_blank">Website</a>}
-                                    {project.tag_name && <p>{project.tag_name}</p>}
+                                    {project.tag_name && <p id='tags'>{project.tag_name}</p>}
                                     {project.description && <p id="describe">{project.description}</p>}     
                                 </CardContent>                     
                             </Card>

@@ -16,7 +16,7 @@ Software required before you attempt to start the app.
 
 - [Node.js](https://nodejs.org/en/)
 - [postgresQL](https://www.postgresql.org/download/)
-- [postico](https://eggerapps.at/postico/) to interface with postgresQL
+- [postico](https://eggerapps.at/postico/) to interface with postgreSQL
 
 
 ### Installing

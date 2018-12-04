@@ -21,4 +21,4 @@ INSERT INTO "projects" ("name", "description", "thumbnail", "github", "date_comp
 
 INSERT INTO "projects" ("name", "description", "thumbnail", "github", "date_completed", "tag_id") VALUES ('Image Gallery', 'An image gallery made using React', 'images/gallery.jpg', 'https://github.com/jpreckinger/weekend-4-gallery', '2018-10-27', '1');
 
-INSERT INTO "projects" ("name", "description", "thumbnail", "github", "date_completed", "tag_id") VALUES ('Feedback Form', 'A multi-view form to handle feedback, made using React-redux', 'images/feedback.jpg', 'https://github.com/jpreckinger/weekend-challenge-5', '2018-11-5', '5'); 
+INSERT INTO "projects" ("name", "description", "thumbnail", "github", "date_completed", "tag_id") VALUES ('Feedback Form', 'A multi-view form to handle feedback, made using React-redux', 'images/feedback.jpg', 'https://github.com/jpreckinger/feedback-form', '2018-11-5', '5'); 
