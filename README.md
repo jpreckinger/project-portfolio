@@ -1,6 +1,8 @@
 # Project Portfolio
 
-Multiview project portfolio. Main view displays snapshot and information about various projects, ordered by date completed, with the most recently completed at the top. The admin view allows a user to add a new project, or delete an existing project. Each call and response is handled by a variety of redux-sagas, and redux reducers, before being return to the client.
+Multiview project portfolio. Main view displays snapshot and information about various projects, ordered by date completed, with the most recently completed at the top. The admin view allows a user to add a new project, or delete an existing project. This application allows me to display projects previously worked on, with links to the github repos and live versions if applicable. The application uses conditional rendering to only display aspects of each entry that have value. The core of the app is React, using Redux and Redux-Saga to handle async events and manage call order. 
+
+The live version can be found at https://thawing-springs-85717.herokuapp.com/#/
 
 ## Built With
 
@@ -27,13 +29,20 @@ Steps to get the development environment running.
 2. `npm install`
 3. `npm run client`
 4. `npm run server` in a different terminal window
+5. Initiate postgres (depends on install method)
+6. Copy/paste database.sql file contents into postico, execute all statements
+
+## Screen Shot
+
+![Project View](/public/images/projects.jpg)
+![Admin View](/public/images/admin.jpg)
 
 ### Completed Features
 
 High level list of items completed.
 
-- [x] Adding and Deleting projects
-- [x] Displaying up-to-date results on both views
+- [x] Projects displaying on main view
+- [x] Admin view for adding/deleting projects
 
 ### Next Steps
 
